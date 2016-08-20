@@ -6,15 +6,15 @@ var Types = keystone.Field.Types;
  * =============
  */
 
-var Image = new keystone.List('Image', {
+var Image = new keystone.List('Images', {
 	autokey: { from: 'name', path: 'key', unique: true },
 });	
 
 Image.add({
 	name: { type: String, required: true },
-	tags: { type: String },
+	tagss: { type: String },
 	publishedDate: { type: Date, default: Date.now },
-	imagep: { type: Types.CloudinaryImage },
+	imagep: { type: Types.CloudinaryImage }
 });
 
 Image.register();
