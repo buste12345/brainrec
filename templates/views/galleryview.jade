@@ -1,0 +1,80 @@
+extends ../layouts/default
+
+block content
+  .container: .row: .col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
+    article
+      style.
+        div.img {
+        border: 1px solid #ccc;
+        }
+        div.img:hover {
+        border: 1px solid #777;
+        }
+        div.img img {
+        width: 100%;
+        height: auto;
+        }
+        div.desc {
+        padding: 15px;
+        text-align: center;
+        }
+        * {
+        box-sizing: border-box;
+        }
+        .responsive {
+        padding: 0 6px;
+        float: left;
+        width: 24.99999%;
+        }
+        @media only screen and (max-width: 700px){
+        .responsive {
+        width: 49.99999%;
+        margin: 6px 0;
+        }
+        }
+        @media only screen and (max-width: 500px){
+        .responsive {
+        width: 100%;
+        }
+        }
+        .clearfix:after {
+        content: "";
+        display: table;
+        clear: both;
+        }
+    body
+      h2 Galeria de imagenes
+      if data.page==1
+        span='<' 
+      if data.page!=1
+        a(href="/galleryview?limit="+data.limit+"&page="+(parseInt(data.page)-1))='<'
+      - for (var i=1; i<data.imgcount+1; i++)
+        if data.page==i
+          span=i
+        else
+          a(href="/galleryview?limit="+data.limit+"&page="+i)= i
+      if data.page==data.imgcount
+        span='>' 
+      if data.page!=data.imgcount
+        a(href="/galleryview?limit="+data.limit+"&page="+(parseInt(data.page)+1))='>'
+      div(style='padding:6px;')
+        form(action='galleryview',method='get')
+          span Busqueda:
+          input(type='textbox',name='searchquery')
+          input(type='submit',value="Buscar")
+          input(type='hidden',name='limit',value=data.limit)
+          input(type='hidden',name='page',value=1)
+          
+      br
+      for result in data.imageres
+        .responsive
+          .img
+            a(target='_blank', href='/image/'+result.key)
+              img(src=result.imagep.url, width='300', height='200')
+            .desc='test'
+      .clearfix
+
+        //p
+        //  | This example use media queries to re-arrange the images on different screen sizes: for screens larger than 700px wide, it will show four images side by side, for screens smaller than 700px, it will show two images side by side. For screens smaller than 500px, the images will stack vertically (100%).
+        //p
+        //  | You will learn more about media queries and responsive web design later in our CSS Tutorial.

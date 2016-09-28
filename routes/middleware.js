@@ -10,7 +10,8 @@ exports.initLocals = function (req, res, next) {
 		{ label: 'Blog', key: 'blog', href: '/blog' },
 		{ label: 'Gallery', key: 'gallery', href: '/gallery' },
 		{ label: 'Add Image', key: 'addimage', href: '/addimage' },
-		{ label: 'Check Image', key: 'image', href: '/image' }
+		{ label: 'Check Image', key: 'image', href: '/image' },
+		{ label: 'Search images', key: 'search', href: '/galleryview?limit=16&page=1' }
 	];
 	res.locals.user = req.user;
 	next();

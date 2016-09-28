@@ -19,6 +19,7 @@ exports = module.exports = function (app) {
 	app.get('/blog/post/:post', routes.views.post);
 	app.get('/gallery', routes.views.gallery);
 	app.get('/addimage', routes.views.addimage);
+	app.get('/galleryview', routes.views.galleryview);
 	app.get('/image/:publicid?', routes.views.image);
 	app.get('/cloudinary_cors.html',function(req,res){
        

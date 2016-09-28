@@ -14,7 +14,11 @@ Image.add({
 	name: { type: String, required: true },
 	tagss: { type: String },
 	publishedDate: { type: Date, default: Date.now },
-	imagep: { type: Types.CloudinaryImage }
+	imagep: { type: Types.CloudinaryImage },
+	curve: {
+		counter: { type: String },
+		keyword: { type: String }
+	}
 });
 
 Image.register();
